@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+//@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+  background: #000;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.socAccountsSet {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__account {
+    width: 17%;
+    font-family: 'Poiret One', cursive;
+//    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 1.25em;
+    border-right: 1px solid #888;
+
+    &:hover {
+      color: #888;
+    }
+
+    &:visited,
+    &:focus {
+      outline: none;
+    }
+
+    &_last {
+      border-right: none;
+    }
+  }
+}
+
