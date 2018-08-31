@@ -1,20 +1,32 @@
-var fromWhere;
-var referrerOutput;
-var referrerCookie;
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+var pageReferrer = new URL(document.referrer.toString());
+var pageReferrerHostname = pageReferrer.hostname;
+const pageCookie = document.cookie;
+var cookieValue = getCookie('referrer');
 
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM fully loaded and parsed");
-    fromWhere = document.referrer;
-    referrerOutput = document.getElementById('pageReferrer');
-    referrerCookie = document.getElementById('pageCookie');
-    referrerOutput.textContent = fromWhere;
 
-    document.cookie = "username=John Doe";
-    document.cookie = "referrer=" + fromWhere;
+    var referrerOutput = document.getElementById('pageReferrer');
+    var referrerHostnameOutput = document.getElementById('pageReferrerHostname');
+    var cookieOutput = document.getElementById('pageCookie');
+    var cookieNewOutput = document.getElementById('pageCookieNew');
 
-    var fromCookie = document.cookie;
+    referrerOutput.textContent = pageReferrer;
+    referrerHostnameOutput.textContent = pageReferrerHostname;
+    cookieOutput.textContent = pageCookie;
 
-    referrerCookie.textContent = fromCookie;
+    if (!cookieValue && pageReferrerHostname !== 'voloshko.com') {
+        document.cookie = "referrer=" + pageReferrer;
+    }
+
+    const pageCookieNew = document.cookie;
+    cookieNewOutput.textContent = pageCookieNew;
 });
 
 
