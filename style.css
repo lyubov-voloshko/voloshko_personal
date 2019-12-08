@@ -1,33 +1,132 @@
 @import url("https://fonts.googleapis.com/css?family=Poiret+One");
+
+@font-face {
+  font-family: Hattan Antique;
+  src: url('assets/fonts/HattanAntiqueNormal.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Parisian;
+  src: url('assets/fonts/ParisianStd.otf');
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: #000; }
+  background: #000; 
+  height: 100vh;
+  width: 100vw;
+}
 
 main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 
 .socAccountsSet {
   display: flex;
-  width: 100%;
-  margin-bottom: 20px; }
-  .socAccountsSet__account {
-    width: 17%;
+  flex-direction: column;
+  list-style: none;
+  margin-left: 20px; 
+}
+
+.socAccount {
+  transform: translate(0,0);
+  transform-origin: left center;
+  transition: color 0.3s, transform 300ms;  
+  transition-timing-function: linear;
+  cursor: pointer;
+  padding: 15px;
+  margin: 10px;
+}
+  
+  .socAccount__link {
     font-family: 'Poiret One', cursive;
     text-decoration: none;
-    text-align: center;
     color: #fff;
     font-size: 1.25em;
-    border-right: 1px solid #888; }
+  }
+  
     .socAccountsSet__account:hover {
-      color: #888; }
-    .socAccountsSet__account:visited, .socAccountsSet__account:focus {
-      outline: none; }
-    .socAccountsSet__account_last {
-      border-right: none; }
+      color: #888; 
+    }
+  
+      .socAccountsSet__account:visited, .socAccountsSet__account:focus {
+      outline: none; 
+    }
+  
+      .socAccountsSet__account_last {
+      border-right: none; 
+    }
 
-.testText {
-  color: #fafafa; }
+  .socAccount:hover {
+    transform: scale(1.1);  
+    transform-origin: left center;
+  }
 
-/*# sourceMappingURL=style.css.map */
+.portrait {
+  position: relative;
+  background: #AEAEAF;
+  height: 50vmin;
+  overflow: hidden;
+  width: 50vmin;
+}
+
+.portrait img {
+  filter: grayscale(0.5) brightness(0.75) contrast(1.25);
+  //margin-left: -20%;
+  width: 110%;
+}
+
+/*.logo {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: Parisian, sans-serif;
+  font-size: 3em;
+  z-index: 1;
+}*/
+
+.logo {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: whitesmoke;
+  font-family: Parisian, sans-serif;
+  font-size: 2em;
+  z-index: 1;
+  height: 3.5em;
+  width: 3.5em;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-left: 5px;
+  mix-blend-mode: screen;
+}
+
+.name {
+  display: block;
+  margin-left: 0.2em;
+  margin-bottom: -1.4em;
+}
+
+.surname {
+  display: inline-block;
+  margin-left: -0.5em;
+  vertical-align: 0.2em;
+}
+
+.surname__firstLatter {
+  font-family: Hattan Antique, sans-serif !important;
+  font-size: 2em;
+}
+
+.surname::first-letter {
+  color: transparent;
+}

@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap');
+
+@font-face {
+  font-family: Hattan Antique;
+  src: url('assets/fonts/HattanAntiqueNormal.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Parisian;
+  src: url('assets/fonts/ParisianStd.otf');
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000; 
+  font-family: Roboto, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  align-items: stretch;
+  color: whitesmoke;
+  font-size: 0.875em;
+  font-weight: 300;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+.sidebar {
+  box-sizing: border-box;
+  box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.25);
+  padding: 20px 28px;
+  width: 30%;
+  z-index: 1;
+}
+
+@media screen and (max-width: 720px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+.sidebar__occupation {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar__title {
+  margin: 32px 0 8px;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.skill__level {
+  display: inline-block;
+  background-image: linear-gradient(#666, #666);
+  background-repeat: no-repeat;
+  border: 1px solid whitesmoke;
+  height: 12px;
+}
+
+.skill__item {
+  margin: 16px 0 -4px;
+}
+
+.academic__institution {
+  display: block;
+  font-size: 0.875em;
+  margin: 12px 0 8px;
+}
+
+.page {
+  background: #333;
+  box-sizing: border-box;
+  flex: 1 0 80%;
+  padding: 50px 30px;
+}
+
+/*.jobs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px 40px;
+  margin-top: 20px;
+}*/
+
+.job {
+  margin: 20px 0;
+}
+
+.job__header {
+  margin: 32px 0 12px;
+}
+
+.job__title {
+  font-weight: 700;
+}
+
+.job__details {
+  display: inline-block;
+  font-size: 0.875em;
+  margin-top: 8px;
+}
+
+.job__company {
+  display: inline-block;
+  text-transform: uppercase;
+  margin-bottom: 8px; 
+}
+
+.experience {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-gap: 8px 20px;
+  align-items: center;
+}
+
+@media screen and (max-width: 720px) {
+  .experience {
+    grid-template-columns: 1fr;    
+  }
+}
+
+.experience__level {
+  background-image: linear-gradient(darkgray, darkgray);
+  background-repeat: no-repeat;
+  border: 1px solid whitesmoke;
+  height: 16px;
+}
+
+@media screen and (max-width: 720px) {
+  .experience__job {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #666;
+    margin-bottom: 32px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.logo {
+  background: whitesmoke;
+  font-family: Parisian, sans-serif;
+  font-size: 2.5em;
+  z-index: 1;
+  height: 3.5em;
+  width: 3.5em;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-left: 5px;
+  color: black;
+  border-radius: 4px;
+  margin: 30px auto;
+}
+
+.name {
+  display: block;
+  margin-left: 0.2em;
+  margin-bottom: -1.4em;
+}
+
+.surname {
+  display: inline-block;
+  margin-left: -0.5em;
+  vertical-align: 0.2em;
+}
+
+.surname__firstLatter {
+  font-family: Hattan Antique, sans-serif !important;
+  font-size: 2em;
+}
+
+.surname::first-letter {
+  color: transparent;
+}
