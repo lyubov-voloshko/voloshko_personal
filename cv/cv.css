@@ -2,13 +2,13 @@
 
 @font-face {
   font-family: Hattan Antique;
-  src: url('assets/fonts/HattanAntiqueNormal.ttf');
+  src: url('../assets/fonts/HattanAntiqueNormal.ttf');
   font-display: swap;
 }
 
 @font-face {
   font-family: Parisian;
-  src: url('assets/fonts/ParisianStd.otf');
+  src: url('../assets/fonts/ParisianStd.otf');
   font-display: swap;
 }
 
@@ -148,7 +148,7 @@ ul {
 
 @media screen and (max-width: 720px) {
   .experience {
-    grid-template-columns: 1fr 1fr 2fr;    
+    grid-template-columns: 1fr;    
   }
 }
 
