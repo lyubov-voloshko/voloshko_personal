@@ -25,6 +25,12 @@ body {
   width: 100%;
 }
 
+@media screen and (max-width: 720px) {
+  body {
+    font-size: 1.15em;
+  }
+}
+
 main {
   display: flex;
   align-items: stretch;
@@ -35,7 +41,7 @@ main {
   width: 100%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 720px) {
   main {
     flex-direction: column;
   }
@@ -53,7 +59,7 @@ ul {
   z-index: 1;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 720px) {
   .sidebar {
     width: 100%;
   }
@@ -140,9 +146,9 @@ ul {
   align-items: center;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 720px) {
   .experience {
-    grid-template-columns: 1fr;    
+    grid-template-columns: 1fr 1fr 2fr;    
   }
 }
 
@@ -153,7 +159,7 @@ ul {
   height: 16px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 720px) {
   .experience__job {
     padding-bottom: 20px;
     border-bottom: 1px solid #666;
