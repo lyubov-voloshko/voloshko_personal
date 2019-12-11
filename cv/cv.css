@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap');
-
-@font-face {
-  font-family: Hattan Antique;
-  src: url('../assets/fonts/HattanAntiqueNormal.ttf');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Parisian;
-  src: url('../assets/fonts/ParisianStd.otf');
-  font-display: swap;
-}
+@import url('../logo.css');
 
 * {
   margin: 0;
@@ -108,13 +97,6 @@ ul {
   padding: 50px 30px;
 }
 
-/*.jobs {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 20px 40px;
-  margin-top: 20px;
-}*/
-
 .job {
   margin: 20px 0;
 }
@@ -167,47 +149,12 @@ ul {
   }
 }
 
-
-
-
-
-
-
-
-
-
-.logo {
-  background: whitesmoke;
-  font-family: Parisian, sans-serif;
-  font-size: 2.5em;
-  z-index: 1;
-  height: 3.5em;
-  width: 3.5em;
-  box-sizing: border-box;
-  padding-top: 20px;
-  padding-left: 5px;
-  color: black;
-  border-radius: 4px;
-  margin: 30px auto;
-}
-
-.name {
+.sidebar__logo {
   display: block;
-  margin-left: 0.2em;
-  margin-bottom: -1.4em;
-}
-
-.surname {
-  display: inline-block;
-  margin-left: -0.5em;
-  vertical-align: 0.2em;
-}
-
-.surname__firstLatter {
-  font-family: Hattan Antique, sans-serif !important;
-  font-size: 2em;
-}
-
-.surname::first-letter {
-  color: transparent;
+  background: whitesmoke;
+  border-radius: 4px;
+  font-size: 2.5em;
+  color: black;
+  margin: 30px auto;
+  text-decoration: none;
 }

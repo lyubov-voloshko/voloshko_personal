@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poiret+One");
 
-@font-face {
-  font-family: Hattan Antique;
-  src: url('assets/fonts/HattanAntiqueNormal.ttf');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Parisian;
-  src: url('assets/fonts/ParisianStd.otf');
-  font-display: swap;
-}
+@import url('../logo.css');
 
 * {
   margin: 0;
@@ -94,39 +84,11 @@ main {
   z-index: 1;
 }*/
 
-.logo {
+.portrait__logo {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background: whitesmoke;
-  font-family: Parisian, sans-serif;
   font-size: 2em;
-  z-index: 1;
-  height: 3.5em;
-  width: 3.5em;
-  box-sizing: border-box;
-  padding-top: 20px;
-  padding-left: 5px;
   mix-blend-mode: screen;
-}
-
-.name {
-  display: block;
-  margin-left: 0.2em;
-  margin-bottom: -1.4em;
-}
-
-.surname {
-  display: inline-block;
-  margin-left: -0.5em;
-  vertical-align: 0.2em;
-}
-
-.surname__firstLatter {
-  font-family: Hattan Antique, sans-serif !important;
-  font-size: 2em;
-}
-
-.surname::first-letter {
-  color: transparent;
+  z-index: 1;
 }
