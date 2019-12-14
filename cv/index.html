@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <link rel=StyleSheet href="cv.css" type="text/css" media=screen />
     <link rel="icon" type="image/svg" href="../assets/images/v.png">
+    <link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
 </head>
 <body>
     <main>
@@ -162,5 +164,9 @@
                 
         </div>
     </main>
+
+    <script>
+        console.log(window.matchMedia('prefers-color-scheme').media);
+    </script>
 </body>
 </html>

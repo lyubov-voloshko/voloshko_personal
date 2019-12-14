@@ -4,10 +4,16 @@
 * {
   margin: 0;
   padding: 0;
+  transition: all 500ms ease-out;
+}
+
+html {
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  background: #000; 
+  background: var(--color-main-bg);
   font-family: Roboto, sans-serif;
   height: 100%;
   overflow-x: hidden;
@@ -23,7 +29,7 @@ body {
 main {
   display: flex;
   align-items: stretch;
-  color: whitesmoke;
+  color: var(--color-text);
   font-size: 0.875em;
   font-weight: 300;
   height: 100%;
@@ -41,8 +47,9 @@ ul {
 }
 
 .sidebar {
+  background: var(--color-sideBar-bg);
   box-sizing: border-box;
-  box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.25);
+  //box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.25);
   padding: 20px 28px;
   width: 30%;
   z-index: 1;
@@ -74,9 +81,9 @@ ul {
 
 .skill__level {
   display: inline-block;
-  background-image: linear-gradient(#666, #666);
+  background-image: linear-gradient(var(--color-sideBar-bg-surface), var(--color-sideBar-bg-surface));
   background-repeat: no-repeat;
-  border: 1px solid whitesmoke;
+  border: 1px solid var(--color-text);
   height: 12px;
 }
 
@@ -91,7 +98,7 @@ ul {
 }
 
 .page {
-  background: #333;
+  background: var(--color-main-bg);
   box-sizing: border-box;
   flex: 1 0 80%;
   padding: 50px 30px;
@@ -135,26 +142,26 @@ ul {
 }
 
 .experience__level {
-  background-image: linear-gradient(darkgray, darkgray);
+  background-image: linear-gradient(var(--color-main-bg-surface), var(--color-main-bg-surface));
   background-repeat: no-repeat;
-  border: 1px solid whitesmoke;
+  border: 1px solid var(--color-text);
   height: 16px;
 }
 
 @media screen and (max-width: 720px) {
   .experience__job {
     padding-bottom: 20px;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid var(--color-sideBar-bg-surface);
     margin-bottom: 32px;
   }
 }
 
 .sidebar__logo {
   display: block;
-  background: whitesmoke;
+  background: var(--color-text);
   border-radius: 4px;
   font-size: 2.5em;
-  color: black;
+  color: var(--color-main-bg);
   margin: 30px auto;
   text-decoration: none;
 }
