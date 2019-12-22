@@ -73,7 +73,8 @@ ul {
   flex-direction: column;
   background: var(--color-sideBar-bg);
   box-sizing: border-box;
-  padding: 40px 28px;
+  //padding: 40px 28px;
+  padding: 3.5% 2%;
   height: 100%;
   width: 30%;
   z-index: 1;
@@ -142,7 +143,8 @@ ul {
   flex-direction: column;
   background: var(--color-main-bg);
   box-sizing: border-box;
-  padding: 40px 30px;
+  //padding: 40px 30px;
+  padding: 3.5% 2%;
 }
 
 .page__heading1 {
