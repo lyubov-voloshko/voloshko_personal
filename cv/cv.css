@@ -1,6 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap');
 @import url('../logo.css');
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: #333;
+    --color-main-bg-surface: darkgray;
+    --color-main-bg: whitesmoke;
+    --color-sideBar-bg-surface: #666;
+    --color-sideBar-bg: #dedede;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: whitesmoke;
+    --color-main-bg-surface: darkgray;
+    --color-main-bg: #333;
+    --color-sideBar-bg-surface: #666;
+    --color-sideBar-bg: black;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +30,7 @@
 html {
   height: 100%;
   width: 100%;
+  font-size: calc(12px + 6 * ((100vw - 320px) / 1024));
 }
 
 body {
@@ -33,6 +54,7 @@ main {
   font-size: 0.875em;
   font-weight: 300;
   height: 100%;
+  max-height: 100vh;
   width: 100%;
 }
 
@@ -47,10 +69,12 @@ ul {
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   background: var(--color-sideBar-bg);
   box-sizing: border-box;
-  //box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.25);
-  padding: 20px 28px;
+  padding: 40px 28px;
+  height: 100%;
   width: 30%;
   z-index: 1;
 }
@@ -67,8 +91,22 @@ ul {
   width: 100%;
 }
 
+.sidebar__skills {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar__skill {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .sidebar__title {
-  margin: 32px 0 8px;
+  margin-bottom: 8px;
 }
 
 .skill {
@@ -84,7 +122,7 @@ ul {
   background-image: linear-gradient(var(--color-sideBar-bg-surface), var(--color-sideBar-bg-surface));
   background-repeat: no-repeat;
   border: 1px solid var(--color-text);
-  height: 12px;
+  height: 0.75em;
 }
 
 .skill__item {
@@ -98,18 +136,31 @@ ul {
 }
 
 .page {
+  flex: 1 0 80%;
+  display: flex;
+  flex-direction: column;
   background: var(--color-main-bg);
   box-sizing: border-box;
-  flex: 1 0 80%;
-  padding: 50px 30px;
+  padding: 40px 30px;
+}
+
+.page__heading1 {
+  margin-bottom: 32px;
+}
+
+.jobs {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .job {
-  margin: 20px 0;
+  
 }
 
 .job__header {
-  margin: 32px 0 12px;
+  margin-bottom: 12px;
 }
 
 .job__title {
@@ -124,8 +175,9 @@ ul {
 
 .job__company {
   display: inline-block;
-  text-transform: uppercase;
+  line-height: 1.25em;
   margin-bottom: 8px; 
+  text-transform: uppercase;
 }
 
 .experience {
@@ -145,7 +197,7 @@ ul {
   background-image: linear-gradient(var(--color-main-bg-surface), var(--color-main-bg-surface));
   background-repeat: no-repeat;
   border: 1px solid var(--color-text);
-  height: 16px;
+  height: 1em;
 }
 
 @media screen and (max-width: 720px) {
@@ -162,6 +214,13 @@ ul {
   border-radius: 4px;
   font-size: 2.5em;
   color: var(--color-main-bg);
-  margin: 30px auto;
+  margin: 0 auto 30px;
   text-decoration: none;
+}
+
+.petProjects {
+  position: absolute;
+  right: 30px;
+  bottom: 100px;
+  width: 35%;
 }

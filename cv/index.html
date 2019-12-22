@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <link rel=StyleSheet href="cv.css" type="text/css" media=screen />
     <link rel="icon" type="image/svg" href="../assets/images/v.png">
-    <link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
+    <!--<link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">-->
 </head>
 <body>
     <main>
@@ -19,58 +19,62 @@
             </a>
             <span class="sidebar__occupation">Front End Developer</span>
 
-            
-
-
-            <h2 class="sidebar__title">Skills</h2>
-            Technologies:
-            <ul>
-                <li class="skill">
-                    <span>HTML</span>
-                    <div class="skill__level" style="background-size: 95%"></div>
-                </li>
-                <li class="skill">
-                    <span>CSS</span>
-                    <div class="skill__level" style="background-size: 90%"></div>
-                </li>
-                <li class="skill">
-                    <span>JS</span>
-                    <div class="skill__level" style="background-size: 60%"></div>
-                </li>
-            </ul>
-            
-            <p class="skill__item">Instruments: Git, WebStorm / VScode, Photoshop, Figma.</p>
-            <p class="skill__item">Writing technical texts.</p>
-
-            <h2 class="sidebar__title">Languages</h2>
-            <ul>
-                <li class="skill">
-                    <span>English</span>
-                    <div class="skill__level" style="background-size: 85%"></div>     
-                </li>
-                <li class="skill">
-                    <span>Ukrainian</span>
-                    <div class="skill__level" style="background-size: 99%"></div>
-                </li>
-                <li class="skill">
-                    <span>Russian</span>
-                    <div class="skill__level" style="background-size: 90%"></div>  
-                </li>
-            </ul>
-
-            <h2 class="sidebar__title">Academic qualifications</h2>
-            <div class="academic__item">
-                <span class="academic__institution">2006 — 2011 (Oles Honchar DNU)</span>
-                bachelor's and master's degree with honours in Applied Mathematics.
+            <div class="sidebar__skills">
+                <div class="sidebar__skill">
+                    <h2 class="sidebar__title">Skills</h2>
+                    Technologies:
+                    <ul>
+                        <li class="skill">
+                            <span>HTML</span>
+                            <div class="skill__level" style="background-size: 95%"></div>
+                        </li>
+                        <li class="skill">
+                            <span>CSS</span>
+                            <div class="skill__level" style="background-size: 90%"></div>
+                        </li>
+                        <li class="skill">
+                            <span>JS</span>
+                            <div class="skill__level" style="background-size: 60%"></div>
+                        </li>
+                    </ul>
+                    
+                    <p class="skill__item">Instruments: Git, WebStorm / VScode, Photoshop, Figma.</p>
+                    <p class="skill__item">Writing technical texts.</p>
+                </div>
+    
+                <div class="sidebar__skill">
+                    <h2 class="sidebar__title">Languages</h2>
+                    <ul>
+                        <li class="skill">
+                            <span>English</span>
+                            <div class="skill__level" style="background-size: 85%"></div>     
+                        </li>
+                        <li class="skill">
+                            <span>Ukrainian</span>
+                            <div class="skill__level" style="background-size: 99%"></div>
+                        </li>
+                        <li class="skill">
+                            <span>Russian</span>
+                            <div class="skill__level" style="background-size: 90%"></div>  
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar__skill">
+                    <h2 class="sidebar__title">Academic qualifications</h2>
+                    <div class="academic__item">
+                        <span class="academic__institution">2006 — 2011 (Oles Honchar DNU)</span>
+                        bachelor's and master's degree with honours in Applied Mathematics.
+                    </div>
+                    <div class="academic__item">
+                        <span class="academic__institution">2011 — 2015 (Oles Honchar DNU)</span>
+                        PhD in Mathematical Simulation and Methods of Calculation.
+                    </div>
+                </div>
             </div>
-            <div class="academic__item">
-                <span class="academic__institution">2011 — 2015 (Oles Honchar DNU)</span>
-                PhD in Mathematical Simulation and Methods of Calculation.
-            </div>
-
         </div>
         <div class="page">
-                <h1>Work experience</h1>
+                <h1 class="page__heading1">Work experience</h1>
                 <ul class="jobs">
                     <li class="job">
                         <div class="job__header">
@@ -132,22 +136,15 @@
                         </div>
                     </li>
                     
-                    Pet projects
-                    <ul>
-                        <li>Vue + Vuex + Vue MDC + Firebase</li>
-                        <li>React + Redux(Thunk) + Firebase</li>
-                        <li>Web components + Firebase</li>
-                    </ul>
-
                     <li class="job">
                             <strong class="job__title">associate professor</strong>
-                            <span class="job__details">(2016 — 2019)</span>,
+                            <span class="job__details">(2016 — 2019)</span>,<br/>
                             <strong class="job__title">lecturer</strong>
-                            <span class="job__details">(2015 — 2016)</span>,
+                            <span class="job__details">(2015 — 2016)</span>,<br/>
                             <strong class="job__title">assistant</strong>
                             <span class="job__details">(2011 — 2015)</span><br>
                             <span class="job__details job__company">
-                                Computer Science department, Applied Mathematics Faculty,
+                                Computer Science department, <br/>Applied Mathematics Faculty,<br/>
                                 Oles Honchar Dnipro National University
                             </span> 
                         
@@ -160,7 +157,14 @@
                 </ul>
                 
                 
-                
+                <div class="petProjects">
+                        <h1>Pet projects</h1>
+                        <ul>
+                            <li>Vue + Vuex + Vue MDC + Firebase</li>
+                            <li>React + Redux(Thunk) + Firebase</li>
+                            <li>Web components + Firebase</li>
+                        </ul>
+                </div>
                 
         </div>
     </main>
