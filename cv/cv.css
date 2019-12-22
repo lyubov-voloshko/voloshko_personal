@@ -30,7 +30,7 @@
 html {
   height: 100%;
   width: 100%;
-  font-size: calc(12px + 6 * ((100vw - 320px) / 1024));
+  font-size: calc(14px + 6 * ((100vw - 720px) / 1280));
 }
 
 body {
@@ -106,7 +106,8 @@ ul {
 }
 
 .sidebar__title {
-  margin-bottom: 8px;
+  margin-bottom: 2%;
+  margin-top: 4%;
 }
 
 .skill {
@@ -114,7 +115,7 @@ ul {
   grid-template-columns: 20% 1fr;
   grid-gap: 20px;
   align-items: center;
-  margin: 8px 0;
+  margin: 3% 0;
 }
 
 .skill__level {
@@ -126,13 +127,13 @@ ul {
 }
 
 .skill__item {
-  margin: 16px 0 -4px;
+  margin-top: 4%;
 }
 
 .academic__institution {
   display: block;
   font-size: 0.875em;
-  margin: 12px 0 8px;
+  margin: 3% 0 8px;
 }
 
 .page {
@@ -183,7 +184,7 @@ ul {
 .experience {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
-  grid-gap: 8px 20px;
+  grid-gap: 0.5vw 20px;
   align-items: center;
 }
 
