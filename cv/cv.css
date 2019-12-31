@@ -30,7 +30,8 @@
 html {
   height: 100%;
   width: 100%;
-  font-size: calc(14px + 6 * ((100vw - 720px) / 1280));
+  /*font-size: calc(14px + 6 * ((100vw - 720px) / 1280));*/
+  font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (1920 - 300)));
 }
 
 body {
@@ -73,7 +74,7 @@ ul {
   flex-direction: column;
   background: var(--color-sideBar-bg);
   box-sizing: border-box;
-  //padding: 40px 28px;
+  font-size: 0.875em;
   padding: 3.5% 2%;
   height: 100%;
   width: 30%;
@@ -143,7 +144,6 @@ ul {
   flex-direction: column;
   background: var(--color-main-bg);
   box-sizing: border-box;
-  //padding: 40px 30px;
   padding: 3.5% 2%;
 }
 
@@ -185,7 +185,7 @@ ul {
 
 .experience {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 2fr 2fr 3fr;
   grid-gap: 0.5vw 20px;
   align-items: center;
 }
