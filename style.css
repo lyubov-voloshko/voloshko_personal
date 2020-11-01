@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #000; 
+  background: #000;
   height: 100vh;
   width: 100vw;
 }
@@ -25,40 +25,40 @@ main {
   display: flex;
   flex-direction: column;
   list-style: none;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
 .socAccount {
   transform: translate(0,0);
   transform-origin: left center;
-  transition: color 0.3s, transform 300ms;  
+  transition: color 0.3s, transform 300ms;
   transition-timing-function: linear;
   cursor: pointer;
   padding: 15px;
   margin: 10px;
 }
-  
+
   .socAccount__link {
     font-family: 'Poiret One', cursive;
     text-decoration: none;
     color: #fff;
     font-size: 1.25em;
   }
-  
+
     .socAccountsSet__account:hover {
-      color: #888; 
+      color: #888;
     }
-  
+
       .socAccountsSet__account:visited, .socAccountsSet__account:focus {
-      outline: none; 
+      outline: none;
     }
-  
+
       .socAccountsSet__account_last {
-      border-right: none; 
+      border-right: none;
     }
 
   .socAccount:hover {
-    transform: scale(1.1);  
+    transform: scale(1.1);
     transform-origin: left center;
   }
 
@@ -71,8 +71,7 @@ main {
 }
 
 .portrait img {
-  filter: grayscale(0.5) brightness(0.75) contrast(1.25);
-  //margin-left: -20%;
+  /* filter: grayscale(0.5) brightness(0.75) contrast(1.25); */
   width: 110%;
 }
 
