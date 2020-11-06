@@ -17,8 +17,14 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+
+@media screen and (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
 }
 
 .socAccountsSet {
@@ -26,6 +32,16 @@ main {
   flex-direction: column;
   list-style: none;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 720px) {
+  .socAccountsSet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25% 15%;
+    margin: 10% auto 0;
+    width: 90vw;
+  }
 }
 
 .socAccount {
@@ -36,6 +52,13 @@ main {
   cursor: pointer;
   padding: 15px;
   margin: 10px;
+}
+
+@media screen and (max-width: 720px) {
+  .socAccount {
+    padding: 0;
+    margin: 0;
+  }
 }
 
   .socAccount__link {
@@ -70,6 +93,14 @@ main {
   width: 50vmin;
 }
 
+@media screen and (max-width: 720px) {
+  .portrait {
+    margin-top: calc(-4.5em);
+    height: 90vmin;
+    width: 90vmin;
+  }
+}
+
 .portrait img {
   /* filter: grayscale(0.5) brightness(0.75) contrast(1.25); */
   width: 110%;
@@ -90,4 +121,22 @@ main {
   font-size: 2em;
   mix-blend-mode: screen;
   z-index: 1;
+}
+
+@media screen and (max-width: 720px) {
+  .portrait__logo {
+    display: none;
+  }
+}
+
+.page__logo {
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  .page__logo {
+    display: initial;
+    position: fixed;
+    bottom: 20px;
+  }
 }
