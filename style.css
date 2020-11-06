@@ -31,6 +31,7 @@ main {
     flex-direction: column;
     height: auto;
     width: 100vw;
+    overflow: hidden;
   }
 }
 
