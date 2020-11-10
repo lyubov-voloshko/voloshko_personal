@@ -111,6 +111,7 @@ main {
 
 .portrait img {
   /* filter: grayscale(0.5) brightness(0.75) contrast(1.25); */
+  filter: saturate(1.08);
   width: 110%;
 }
 
