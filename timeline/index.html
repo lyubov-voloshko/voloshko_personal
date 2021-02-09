@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Timeline</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="app" class="main">
+            <header class="header">
+                <span>TimeLine</span>
+            </header>
+            <div v-if="this.packCards.length === 0 && this.playersCards === 0">Game over</div>
+            <div class="playfield">
+                <div v-for="(card, index) in playedCards" class="cardBox">
+                    <button v-if="selectedCard.id && index === 0 && playersCards.length !== 0"
+                        class="vacantLot"
+                        v-on:click="() => putCard(card, -1)">
+                    </button>
+                    <div class="card">
+                        <span class="card__title">{{card.title}}</span>
+                        <span class="card__year">{{card.year}}</span>
+                    </div>
+                    <button type="button" v-if="selectedCard.id && playersCards.length !== 0"
+                        class="vacantLot"
+                        v-on:click="() => putCard(card, index)">
+                    </button>
+                </div>
+
+            </div>
+            <div class="players">
+                <div class="playersCards">
+                    <ul class="playersCardsList">
+                        <li v-for="(card, index) in playersCards"
+                            class="card"
+                            :class="{ card_active: card.id === selectedCard.id }"
+                            v-on:click="() => selectCard(card, index)">
+                            <span class="card__title">{{card.title}}</span>
+                            <!-- <span class="card__year">{{card.year}}</span> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
