@@ -15,7 +15,7 @@
                         class="vacantLot"
                         v-on:click="() => putCard(card, -1)">
                     </button>
-                    <div class="card">
+                    <div class="card card_played">
                         <span class="card__title">{{card.title}}</span>
                         <span class="card__year">{{card.year}}</span>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="playersCards">
                     <ul class="playersCardsList">
                         <li v-for="(card, index) in playersCards"
-                            class="card"
+                            class="card card_players"
                             :class="{ card_active: card.id === selectedCard.id }"
                             v-on:click="() => selectCard(card, index)">
                             <span class="card__title">{{card.title}}</span>

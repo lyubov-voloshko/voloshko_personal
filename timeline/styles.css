@@ -1,17 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Verdana;
+    font-family: 'Source Code Pro', monospace;
     height: 100vh;
     width: 100vw;
 }
 
 .header {
+    font-family: 'Noto Serif', serif;
     background: #333;
-    color: white;
+    color: gold;
     font-size: 2em;
     padding: 30px 0;
     text-align: center;
@@ -46,15 +50,25 @@ body {
 }
 
 .card_active {
-    background: silver;
+    background: gold;
+}
+
+.card_played {
+    justify-content: space-between
+}
+
+.card_players {
+    justify-content: center;
+    font-size: 1.15em;
 }
 
 .card__title {
-    font-size: 0.75em;
+    font-size: 0.875em;
     text-align: center;
 }
 
 .card__year {
+    font-family: 'Noto Serif', serif;
     font-size: 1.25em;
     margin-top: 0.5em;
 }

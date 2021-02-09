@@ -110,9 +110,31 @@ main {
 }
 
 .portrait img {
-  /* filter: grayscale(0.5) brightness(0.75) contrast(1.25); */
-  filter: saturate(1.08);
+
   width: 110%;
+  animation: show-portrait 3s;
+}
+
+@keyframes show-portrait {
+  0% {
+    opacity: 0;
+    filter: saturate(1.08) sepia(0.5);
+  }
+  50% {
+    opacity: 1;
+    filter: saturate(1.08) sepia(0.25);
+  }
+  75% {
+
+  }
+  100% {
+
+    filter: saturate(1.08) sepia(0);
+  }
+}
+
+.portrait_loading {
+  animation-play-state: paused !important;
 }
 
 /*.logo {

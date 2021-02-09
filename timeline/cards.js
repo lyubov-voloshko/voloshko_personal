@@ -91,8 +91,8 @@ export default [
     },
     {
         id: 19,
-        title: "Death of Sir Winston Churchill",
-        year: 1965
+        title: "Apollo 11 is landed on the Moon",
+        year: 1969
     },
     {
         id: 20,

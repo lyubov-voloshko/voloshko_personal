@@ -53,7 +53,7 @@ var app = new Vue({
     beforeMount() {
         this.playedCards = this.cards.slice(0, 1);
         this.playersCards = this.cards.slice(1, 7);
-        this.packCards = this.cards.slice(7, 20);
+        this.packCards = this.cards.slice(8, 20);
     }
 })
 

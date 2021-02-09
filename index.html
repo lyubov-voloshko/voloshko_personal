@@ -10,6 +10,20 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <link rel=StyleSheet href="style.css" type="text/css" media=screen />
     <link rel="icon" type="image/svg" href="../assets/images/v.png">
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let portraitContainer = document.getElementById('portrait-container');
+            let portrait = document.getElementById('portrait');
+
+            portraitContainer.classList.add('portrait_loading');
+            heroImage.addEventListener("load", removeLoadingClass);
+
+            function removeLoadingClass() {
+                portraitContainer.classList.remove('portrait_loading');
+                portrait.removeEventListener("load", removeLoadingClass);
+            }
+        }
+    </script>
 </head>
 <body>
     <main>
@@ -18,10 +32,10 @@
                 <span class="name">Lyubov</span><br/>
                 <span class="surname__firstLatter" aria-hidden="true">v</span><span class="surname">voloshko</span>
             </div>
-            <picture>
+            <picture id="portrait-container">
                 <source type="image/avif" srcset="assets/images/lyubov-voloshko.avif">
                 <source type="image/webp" srcset="assets/images/lyubov-voloshko.webp">
-                <img src="assets/images/lyubov-voloshko.jpg" alt="Liubov Voloshko photo">
+                <img src="assets/images/lyubov-voloshko.jpg" alt="Liubov Voloshko photo" id="portrait">
             </picture>
         </div>
         <ul class="socAccountsSet">
