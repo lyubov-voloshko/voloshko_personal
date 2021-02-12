@@ -1,14 +1,31 @@
-import cards from "./cards.js";
+import artHistory from "./cards/art.js"
+import generalHistoryCards from "./cards/general-history.js";
+import scienceCards from "./cards/science.js";
 
 var app = new Vue({
     el: '#app',
     data: {
-        cards: shuffle(cards),
+        cards: shuffle(generalHistoryCards),
         selectedCard: {},
         selectedCardIndex: Number,
         playedCards: [],
         playersCards: [],
-        packCards: []
+        packCards: [],
+        topicsList: ['general-history'],
+        topics: {
+            'general-history': {
+                title: 'general history',
+                cards: generalHistoryCards
+            },
+            'art':{
+                title: 'art',
+                cards: artHistory
+            },
+            'science': {
+                title: 'science',
+                cards: scienceCards
+            }
+        }
     },
     methods: {
         selectCard: function(card, index) {
@@ -48,12 +65,21 @@ var app = new Vue({
                 this.removeCardFromPlayersCards();
                 this.addCardFromPlayersCards();
             }
+        },
+        handOverCards: function(n) {
+            this.cards = shuffle(this.cards);
+            this.playedCards = this.cards.slice(0, 1);
+            this.playersCards = this.cards.slice(1, 7);
+            this.packCards = this.cards.slice(8, n);
+        },
+
+        handleUpdateCards: function() {
+            this.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
+            this.handOverCards(this.cards.length);
         }
     },
     beforeMount() {
-        this.playedCards = this.cards.slice(0, 1);
-        this.playersCards = this.cards.slice(1, 7);
-        this.packCards = this.cards.slice(8, 20);
+        this.handOverCards(20);
     }
 })
 

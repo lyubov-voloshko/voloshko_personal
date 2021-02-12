@@ -8,6 +8,19 @@
             <header class="header">
                 <span>TimeLine</span>
             </header>
+            <div class="settings">
+                <div class="playersCount"></div>
+                <div class="topics">
+                    <div v-for="(topic, key) in topics" class="checkbox topic">
+                        <input type="checkbox" :value="key" :id="key"
+                            class="checkbox__input"
+                            v-model="topicsList"
+                            v-on:change="() => handleUpdateCards()">
+                        <label :for="key" class="checkbox__appearance">{{ topic.title }}</label>
+                    </div>
+                </div>
+            </div>
+
             <div v-if="this.packCards.length === 0 && this.playersCards === 0">Game over</div>
             <div class="playfield">
                 <div v-for="(card, index) in playedCards" class="cardBox">

@@ -22,6 +22,55 @@ body {
     width: 100%;
 }
 
+.settings {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 2%;
+}
+
+.topics {
+    display: flex;
+    align-items: center;
+}
+
+.topic {
+    margin-left: 3em;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox__input {
+    display: none;
+}
+
+.checkbox__appearance {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox__appearance::before {
+    content: '\2713';
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    border-radius: 4px;
+    color: #333;
+    height: 18px;
+    font-size: 14px;
+    margin-right: 6px;
+    margin-bottom: -2px;
+    width: 18px;
+}
+
+.checkbox__input:checked + .checkbox__appearance::before {
+    color: #fff;
+}
+
 .playfield {
     display: flex;
     justify-content: center;
