@@ -14,10 +14,13 @@
                     <div v-for="(topic, key) in topics" class="checkbox topic">
                         <input type="checkbox" :value="key" :id="key"
                             class="checkbox__input"
-                            v-model="topicsList"
-                            v-on:change="() => handleUpdateCards()">
+                            v-model="topicsList">
                         <label :for="key" class="checkbox__appearance">{{ topic.title }}</label>
                     </div>
+                    <button class="button"
+                        v-on:click="() => restart()">
+                        restart
+                    </button>
                 </div>
             </div>
 

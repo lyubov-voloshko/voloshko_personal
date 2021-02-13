@@ -73,7 +73,7 @@ var app = new Vue({
             this.packCards = this.cards.slice(8, n);
         },
 
-        handleUpdateCards: function() {
+        restart: function() {
             this.cards = []
             this.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
             this.handOverCards(this.cards.length);

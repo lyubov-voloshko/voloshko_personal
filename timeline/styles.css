@@ -34,7 +34,7 @@ body {
 }
 
 .topic {
-    margin-left: 3em;
+    margin-right: 3em;
 }
 
 .checkbox {
@@ -68,7 +68,17 @@ body {
 }
 
 .checkbox__input:checked + .checkbox__appearance::before {
-    color: #fff;
+    color: whitesmoke;
+}
+
+.button {
+    background: #333;
+    border: none;
+    border-radius: 4px;
+    color: whitesmoke;
+    font-size: 1em;
+    line-height: 2em;
+    padding: 0 0.5em;
 }
 
 .playfield {
