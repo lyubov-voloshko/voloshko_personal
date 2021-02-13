@@ -74,8 +74,10 @@ var app = new Vue({
         },
 
         handleUpdateCards: function() {
+            this.cards = []
             this.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
             this.handOverCards(this.cards.length);
+            console.log(this.cards.length);
         }
     },
     beforeMount() {
