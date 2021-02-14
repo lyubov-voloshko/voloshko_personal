@@ -73,7 +73,7 @@ var app = new Vue({
                 if (rightCard) {
                     const rightCardIndex = this.playedCards.findIndex(card => card.year > this.selectedCard.year);
                     if (rightCardIndex === 0) {
-                        this.correctPlacementCards = [this.selectedCard, this.playedCards[this.playedCards.length - 1]]
+                        this.correctPlacementCards = [this.selectedCard, this.playedCards[0]]
                     } else {
                         const leftCard = this.playedCards[rightCardIndex - 1];
                         this.correctPlacementCards = [leftCard, this.selectedCard, rightCard];
