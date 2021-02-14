@@ -40,7 +40,6 @@
                         v-on:click="() => putCard(card, index)">
                     </button>
                 </div>
-
             </div>
             <div class="players">
                 <div class="playersCards">
@@ -50,9 +49,22 @@
                             :class="{ card_active: card.id === selectedCard.id }"
                             v-on:click="() => selectCard(card, index)">
                             <span class="card__title">{{card.title}}</span>
-                            <!-- <span class="card__year">{{card.year}}</span> -->
                         </li>
                     </ul>
+                </div>
+            </div>
+
+            <div v-if="error" class="modal">
+                <div class="veil"></div>
+                <div class="popup">
+                    <ul class="cardBox">
+                        <li v-for="card in correctPlacementCards" class="card card_played" :class="{ card_wrong: card.id === selectedCard.id }">
+                            <span class="card__title">{{ card.title }}</span>
+                            <span class="card__year">{{ card.year }}</span>
+                        </li>
+                    </ul>
+
+                    <button class="button popup__button" v-on:click="() => giveNewCard()">ok</button>
                 </div>
             </div>
 

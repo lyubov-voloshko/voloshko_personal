@@ -1,9 +1,13 @@
 import artHistory from "./cards/art.js"
+// import errorPopup from "./errorPopup"
 import generalHistoryCards from "./cards/general-history.js";
 import scienceCards from "./cards/science.js";
 
 var app = new Vue({
     el: '#app',
+    components: {
+        // 'error-popup': errorPopup
+    },
     data: {
         cards: shuffle(generalHistoryCards),
         selectedCard: {},
@@ -25,7 +29,9 @@ var app = new Vue({
                 title: 'science',
                 cards: scienceCards
             }
-        }
+        },
+        error: false,
+        correctPlacementCards: []
     },
     methods: {
         selectCard: function(card, index) {
@@ -33,22 +39,22 @@ var app = new Vue({
             this.selectedCardIndex = index;
         },
         removeCardFromPlayersCards() {
-            let currentPlayersCard = [...this.playersCards];
-            currentPlayersCard.splice(this.selectedCardIndex, 1)
-            this.playersCards = currentPlayersCard;
+            let currentPlayersCards = [...this.playersCards];
+            currentPlayersCards.splice(this.selectedCardIndex, 1)
+            this.playersCards = currentPlayersCards;
         },
-        addCardFromPlayersCards() {
+        addCardToPlayersCards() {
             if (this.packCards.length) {
-                let currentPlayersCard = [...this.playersCards];
-                currentPlayersCard.push(this.packCards[0])
-                this.playersCards = currentPlayersCard;
+                let currentPlayersCards = [...this.playersCards];
+                currentPlayersCards.push(this.packCards[0])
+                this.playersCards = currentPlayersCards;
                 this.packCards.splice(0, 1);
             }
         },
         addCardIntoPlayedCards(index) {
-            let currentPlayedCard = [...this.playedCards];
-            currentPlayedCard.splice(index, 0, this.selectedCard)
-            this.playedCards = currentPlayedCard;
+            let currentPlayedCards = [...this.playedCards];
+            currentPlayedCards.splice(index, 0, this.selectedCard)
+            this.playedCards = currentPlayedCards;
         },
         putCard: function(card, index) {
             if (index === -1 && card.year > this.selectedCard.year) {
@@ -62,10 +68,27 @@ var app = new Vue({
                 this.removeCardFromPlayersCards();
             } else {
                 console.log('error');
-                this.removeCardFromPlayersCards();
-                this.addCardFromPlayersCards();
+                this.error = true;
+                const rightCard = this.playedCards.find(card => card.year > this.selectedCard.year);
+                if (rightCard) {
+                    const rightCardIndex = this.playedCards.findIndex(card => card.year > this.selectedCard.year);
+                    if (rightCardIndex === 0) {
+                        this.correctPlacementCards = [this.selectedCard, this.playedCards[this.playedCards.length - 1]]
+                    } else {
+                        const leftCard = this.playedCards[rightCardIndex - 1];
+                        this.correctPlacementCards = [leftCard, this.selectedCard, rightCard];
+                    }
+                } else {
+                    this.correctPlacementCards = [this.playedCards[this.playedCards.length - 1], this.selectedCard];
+                }
             }
         },
+        giveNewCard: function() {
+            this.removeCardFromPlayersCards();
+            this.addCardToPlayersCards();
+            this.error = false;
+        },
+
         handOverCards: function(n) {
             this.cards = shuffle(this.cards);
             this.playedCards = this.cards.slice(0, 1);

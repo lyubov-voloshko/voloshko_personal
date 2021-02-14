@@ -132,6 +132,11 @@ body {
     margin-top: 0.5em;
 }
 
+.card_wrong .card__title,
+.card_wrong .card__year {
+    color: firebrick;
+}
+
 .vacantLot {
     flex-shrink: 0;
     display: block;
@@ -155,4 +160,32 @@ body {
     justify-items: center;
     list-style: none;
     padding: 0 5%;
+}
+
+/*** popup ***/
+
+.veil {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(51, 51, 51, 0.1);
+    height: calc(100vh - 104px);
+    width: 100vw;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2em 1em 1em;
+}
+
+.popup__button {
+    margin-top: 1.5em;
+    width: 80px;
 }
