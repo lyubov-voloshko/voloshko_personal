@@ -37,6 +37,39 @@ body {
     margin-right: 3em;
 }
 
+.playersCount {
+    display: flex;
+    align-items: center;
+}
+
+.playersCount__label {
+    margin-right: 10px;
+}
+
+.playersNumber {
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 0.875em;
+    line-height: 2em;
+    padding: 0 0.75em;
+    width: 70px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.playersNumber:focus {
+    border: 1px solid black;
+    outline: none;
+}
+
 .checkbox {
     display: flex;
     justify-content: center;
@@ -78,16 +111,38 @@ body {
     color: whitesmoke;
     font-size: 1em;
     line-height: 2em;
-    padding: 0 0.5em;
+    padding: 0 0.75em;
 }
 
 .playfield {
     display: flex;
     justify-content: center;
-    margin: 40px 0;
+    margin: 40px auto;
     overflow: auto;
     padding: 20px 0;
-    width: 100%;
+    width: 94%;
+}
+
+.playersCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.playerCards_active {
+    border: 1px solid gold;
+    border-radius: 8px;
+}
+
+.playerCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vw 0.5vw;
+}
+
+.playerCards__name {
+    margin-bottom: 1.5vw;
 }
 
 .cardBox {
@@ -103,13 +158,18 @@ body {
     box-shadow: 0 0 4px 1px rgba(0,0,0,0.15);
     box-sizing: border-box;
     height: 200px;
-    margin: 0 20px;
+    margin: 0 0.5vw;
     padding: 2em;
     width: 150px;
 }
 
 .card_active {
     background: gold;
+}
+
+.card_blocked {
+    color: lightgray;
+    pointer-events: none;
 }
 
 .card_played {
@@ -143,23 +203,22 @@ body {
     background: silver;
     border: none;
     height: 80%;
+    margin: 0 0.5em;
     width: 12px;
 }
 
-.vacantLot:hover {
+.vacantLot_active:hover {
     background: gold;
 }
 
 .playersCardsList {
-    display: grid;
-    grid-template-columns: repeat( auto-fit, 150px );
-    grid-gap: 2%;
+    display: flex;
     /* grid-auto-flow: column;
     grid-auto-columns: 1fr; */
     align-items: stretch;
     justify-items: center;
     list-style: none;
-    padding: 0 5%;
+    /* padding: 0 5%; */
 }
 
 /*** popup ***/

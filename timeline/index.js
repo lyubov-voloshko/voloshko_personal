@@ -13,7 +13,9 @@ var app = new Vue({
         selectedCard: {},
         selectedCardIndex: Number,
         playedCards: [],
-        playersCards: [],
+        playersCards: Object,
+        currentPlayerIndex: 0,
+        currentPlayer: 'player0',
         packCards: [],
         topicsList: ['general-history'],
         topics: {
@@ -30,8 +32,10 @@ var app = new Vue({
                 cards: scienceCards
             }
         },
+        numberOfPlayers: 1,
         error: false,
-        correctPlacementCards: []
+        correctPlacementCards: [],
+        endOfGame: false
     },
     methods: {
         selectCard: function(card, index) {
@@ -39,15 +43,15 @@ var app = new Vue({
             this.selectedCardIndex = index;
         },
         removeCardFromPlayersCards() {
-            let currentPlayersCards = [...this.playersCards];
+            let currentPlayersCards = [...this.playersCards[this.currentPlayer]];
             currentPlayersCards.splice(this.selectedCardIndex, 1)
-            this.playersCards = currentPlayersCards;
+            this.playersCards[this.currentPlayer] = currentPlayersCards;
         },
         addCardToPlayersCards() {
             if (this.packCards.length) {
-                let currentPlayersCards = [...this.playersCards];
+                let currentPlayersCards = [...this.playersCards[this.currentPlayer]];
                 currentPlayersCards.push(this.packCards[0])
-                this.playersCards = currentPlayersCards;
+                this.playersCards[this.currentPlayer] = currentPlayersCards;
                 this.packCards.splice(0, 1);
             }
         },
@@ -56,16 +60,31 @@ var app = new Vue({
             currentPlayedCards.splice(index, 0, this.selectedCard)
             this.playedCards = currentPlayedCards;
         },
+        handOverPlayersCards() {
+            const initialNumberOfPlayersCards = this.numberOfPlayers * 4;
+            let playersCards = this.cards.slice(1, initialNumberOfPlayersCards + 1);
+            var splittedPlayersCards = {};
+            for (var i = 0; i < this.numberOfPlayers; i++) {
+                splittedPlayersCards[`player${i}`] = playersCards.slice(i * 4, i * 4 + 4);
+            }
+            this.playersCards = {...splittedPlayersCards};
+        },
         putCard: function(card, index) {
             if (index === -1 && card.year > this.selectedCard.year) {
                 this.addCardIntoPlayedCards(index + 1);
                 this.removeCardFromPlayersCards();
+                if (this.playersCards[this.currentPlayer].length === 0) this.endOfGame = true;
+                this.selectedCard = {};
             } else if (index === this.playedCards.length - 1 && this.playedCards[index].year < this.selectedCard.year) {
                 this.addCardIntoPlayedCards(index + 1);
                 this.removeCardFromPlayersCards();
+                if (this.playersCards[this.currentPlayer].length === 0) this.endOfGame = true;
+                this.selectedCard = {};
             } else if (index !== -1 && this.playedCards[index].year < this.selectedCard.year && this.playedCards[index+1].year > this.selectedCard.year) {
                 this.addCardIntoPlayedCards(index + 1);
                 this.removeCardFromPlayersCards();
+                if (this.playersCards[this.currentPlayer].length === 0) this.endOfGame = true;
+                this.selectedCard = {};
             } else {
                 console.log('error');
                 this.error = true;
@@ -81,26 +100,39 @@ var app = new Vue({
                 } else {
                     this.correctPlacementCards = [this.playedCards[this.playedCards.length - 1], this.selectedCard];
                 }
+                // this.shiftThePlayer();
             }
+            if (!this.error && this.playersCards[this.currentPlayer].length !== 0) this.shiftThePlayer();
         },
         giveNewCard: function() {
             this.removeCardFromPlayersCards();
             this.addCardToPlayersCards();
             this.error = false;
+            this.shiftThePlayer();
         },
-
+        shiftThePlayer: function() {
+            if (this.currentPlayerIndex === this.numberOfPlayers - 1) {
+                this.currentPlayerIndex = 0
+            } else {
+                this.currentPlayerIndex = this.currentPlayerIndex + 1;
+            }
+            this.currentPlayer = `player${this.currentPlayerIndex}`
+        },
         handOverCards: function(n) {
             this.cards = shuffle(this.cards);
             this.playedCards = this.cards.slice(0, 1);
-            this.playersCards = this.cards.slice(1, 7);
-            this.packCards = this.cards.slice(8, n);
+            this.handOverPlayersCards();
+            this.packCards = this.cards.slice((this.numberOfPlayers * 4) + 1, n);
         },
 
         restart: function() {
             this.cards = []
             this.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
             this.handOverCards(this.cards.length);
-            console.log(this.cards.length);
+            this.selectedCard = {};
+            this.currentPlayerIndex = 0;
+            this.currentPlayer = 'player0';
+            this.endOfGame = false;
         }
     },
     beforeMount() {
