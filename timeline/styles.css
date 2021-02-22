@@ -114,13 +114,18 @@ input[type=number] {
     padding: 0 0.75em;
 }
 
+.playfieldBox {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    overflow: auto;
+    width: 94%;
+}
+
 .playfield {
     display: flex;
-    justify-content: center;
     margin: 40px auto;
-    overflow: auto;
     padding: 20px 0;
-    width: 94%;
 }
 
 .playersCards {

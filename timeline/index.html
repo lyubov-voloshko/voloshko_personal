@@ -30,27 +30,30 @@
             </div>
 
             <div v-if="this.packCards.length === 0 && this.playersCards === 0">Game over</div>
-            <div class="playfield">
-                <div v-for="(card, index) in playedCards" class="cardBox">
-                    <button v-if="index === 0 && playersCards.length !== 0"
-                        :disabled="!selectedCard.id"
-                        class="vacantLot"
-                        :class="{ vacantLot_active:selectedCard.id }"
-                        v-on:click="() => putCard(card, -1)"
-                        >
-                    </button>
-                    <div class="card card_played">
-                        <span class="card__title">{{card.title}}</span>
-                        <span class="card__year">{{card.year}}</span>
+            <div class="playfieldBox">
+                <div class="playfield">
+                    <div v-for="(card, index) in playedCards" class="cardBox">
+                        <button v-if="index === 0 && playersCards.length !== 0"
+                            :disabled="!selectedCard.id"
+                            class="vacantLot"
+                            :class="{ vacantLot_active:selectedCard.id }"
+                            v-on:click="() => putCard(card, -1)"
+                            >
+                        </button>
+                        <div class="card card_played">
+                            <span class="card__title">{{card.title}}</span>
+                            <span class="card__year">{{card.year}}</span>
+                        </div>
+                        <button type="button" v-if="playersCards.length !== 0"
+                            :disabled="!selectedCard.id"
+                            class="vacantLot"
+                            :class="{ vacantLot_active: selectedCard.id }"
+                            v-on:click="() => putCard(card, index)">
+                        </button>
                     </div>
-                    <button type="button" v-if="playersCards.length !== 0"
-                        :disabled="!selectedCard.id"
-                        class="vacantLot"
-                        :class="{ vacantLot_active: selectedCard.id }"
-                        v-on:click="() => putCard(card, index)">
-                    </button>
                 </div>
             </div>
+
             <div class="players">
                 <div class="playersCards">
                     <div v-for="(cardsSet, player) in playersCards" class="playerCards" :class="{ playerCards_active: currentPlayer === player}">
