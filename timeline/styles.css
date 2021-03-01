@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
+[v-cloak] > * {
+    display:none !important
+}
+
+[v-cloak]::before {
+    content: "loading…";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 1.5em;
+}
+
 * {
     margin: 0;
     padding: 0;

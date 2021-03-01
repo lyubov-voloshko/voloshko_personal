@@ -2,97 +2,100 @@
     <head>
         <title>Timeline</title>
         <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
     </head>
     <body>
         <div id="app" class="main">
             <header class="header">
                 <span>TimeLine</span>
             </header>
-            <div class="settings">
-                <div class="playersCount">
-                    <label for="number-of-players" class="playersCount__label">Number of players</label>
-                    <input type="number" id="number-of-players"
-                        v-model="numberOfPlayers"
-                        class="playersNumber" />
-                </div>
-                <div class="topics">
-                    <div v-for="(topic, key) in topics" class="checkbox topic">
-                        <input type="checkbox" :value="key" :id="key"
-                            class="checkbox__input"
-                            v-model="topicsList">
-                        <label :for="key" class="checkbox__appearance">{{ topic.title }}</label>
+            <main v-cloak>
+                <div class="settings">
+                    <div class="playersCount">
+                        <label for="number-of-players" class="playersCount__label">Number of players</label>
+                        <input type="number" id="number-of-players"
+                            v-model="numberOfPlayers"
+                            class="playersNumber" />
                     </div>
-                    <button class="button"
-                        v-on:click="() => restart()">
-                        restart
-                    </button>
-                </div>
-            </div>
-
-            <div v-if="this.packCards.length === 0 && this.playersCards === 0">Game over</div>
-            <div class="playfieldBox">
-                <div class="playfield">
-                    <div v-for="(card, index) in playedCards" class="cardBox">
-                        <button v-if="index === 0 && playersCards.length !== 0"
-                            :disabled="!selectedCard.id"
-                            class="vacantLot"
-                            :class="{ vacantLot_active:selectedCard.id }"
-                            v-on:click="() => putCard(card, -1)"
-                            >
-                        </button>
-                        <div class="card card_played">
-                            <span class="card__title">{{card.title}}</span>
-                            <span class="card__year">{{card.year}}</span>
+                    <div class="topics">
+                        <div v-for="(topic, key) in topics" class="checkbox topic">
+                            <input type="checkbox" :value="key" :id="key"
+                                class="checkbox__input"
+                                v-model="topicsList">
+                            <label :for="key" class="checkbox__appearance">{{ topic.title }}</label>
                         </div>
-                        <button type="button" v-if="playersCards.length !== 0"
-                            :disabled="!selectedCard.id"
-                            class="vacantLot"
-                            :class="{ vacantLot_active: selectedCard.id }"
-                            v-on:click="() => putCard(card, index)">
+                        <button class="button"
+                            v-on:click="() => restart()">
+                            restart
                         </button>
                     </div>
                 </div>
-            </div>
 
-            <div class="players">
-                <div class="playersCards">
-                    <div v-for="(cardsSet, player) in playersCards" class="playerCards" :class="{ playerCards_active: currentPlayer === player}">
-                        <p class="playerCards__name">{{ player }}</p>
-                        <ul  class="playersCardsList">
-                            <li v-for="(card, index) in cardsSet"
-                                class="card card_players"
-                                :class="{ card_active: card.id === selectedCard.id, card_blocked: currentPlayer !== player}"
-                                v-on:click="() => selectCard(card, index)">
+                <div v-if="this.packCards.length === 0 && this.playersCards === 0">Game over</div>
+                <div class="playfieldBox">
+                    <div class="playfield">
+                        <div v-for="(card, index) in playedCards" class="cardBox">
+                            <button v-if="index === 0 && playersCards.length !== 0"
+                                :disabled="!selectedCard.id"
+                                class="vacantLot"
+                                :class="{ vacantLot_active:selectedCard.id }"
+                                v-on:click="() => putCard(card, -1)"
+                                >
+                            </button>
+                            <div class="card card_played">
                                 <span class="card__title">{{card.title}}</span>
+                                <span class="card__year">{{card.year}}</span>
+                            </div>
+                            <button type="button" v-if="playersCards.length !== 0"
+                                :disabled="!selectedCard.id"
+                                class="vacantLot"
+                                :class="{ vacantLot_active: selectedCard.id }"
+                                v-on:click="() => putCard(card, index)">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="players">
+                    <div class="playersCards">
+                        <div v-for="(cardsSet, player) in playersCards" class="playerCards" :class="{ playerCards_active: currentPlayer === player}">
+                            <p class="playerCards__name">{{ player }}</p>
+                            <ul  class="playersCardsList">
+                                <li v-for="(card, index) in cardsSet"
+                                    class="card card_players"
+                                    :class="{ card_active: card.id === selectedCard.id, card_blocked: currentPlayer !== player}"
+                                    v-on:click="() => selectCard(card, index)">
+                                    <span class="card__title">{{card.title}}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div v-if="error" class="modal">
+                    <div class="veil"></div>
+                    <div class="popup">
+                        <ul class="cardBox">
+                            <li v-for="card in correctPlacementCards" class="card card_played" :class="{ card_wrong: card.id === selectedCard.id }">
+                                <span class="card__title">{{ card.title }}</span>
+                                <span class="card__year">{{ card.year }}</span>
                             </li>
                         </ul>
+
+                        <button class="button popup__button" v-on:click="() => giveNewCard()">ok</button>
                     </div>
-
                 </div>
-            </div>
 
-            <div v-if="error" class="modal">
-                <div class="veil"></div>
-                <div class="popup">
-                    <ul class="cardBox">
-                        <li v-for="card in correctPlacementCards" class="card card_played" :class="{ card_wrong: card.id === selectedCard.id }">
-                            <span class="card__title">{{ card.title }}</span>
-                            <span class="card__year">{{ card.year }}</span>
-                        </li>
-                    </ul>
-
-                    <button class="button popup__button" v-on:click="() => giveNewCard()">ok</button>
+                <div v-if="endOfGame" class="modal">
+                    <div class="veil"></div>
+                    <div class="popup">
+                        <p>The game is over.</p>
+                        <p>The winner is <strong>{{ currentPlayer }}</strong></p>
+                        <button class="button popup__button" v-on:click="() => restart()">restart</button>
+                    </div>
                 </div>
-            </div>
-
-            <div v-if="endOfGame" class="modal">
-                <div class="veil"></div>
-                <div class="popup">
-                    <p>The game is over.</p>
-                    <p>The winner is <strong>{{ currentPlayer }}</strong></p>
-                    <button class="button popup__button" v-on:click="() => restart()">restart</button>
-                </div>
-            </div>
+            </main>
 
         </div>
 
