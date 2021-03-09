@@ -2,11 +2,13 @@ import artHistory from "./cards/art.js";
 import errorPopup from "./errorPopup.js";
 import generalHistoryCards from "./cards/general-history.js";
 import scienceCards from "./cards/science.js";
+import settings from "./settings.js";
 
 var app = new Vue({
     el: '#app',
     components: {
-        'error-popup': errorPopup
+        'error-popup': errorPopup,
+        'settings': settings
     },
     data: {
         cards: shuffle(generalHistoryCards),
@@ -17,7 +19,10 @@ var app = new Vue({
         currentPlayerIndex: 0,
         currentPlayer: 'player0',
         packCards: [],
-        topicsList: ['general-history'],
+        settings: {
+            numberOfPlayers: 1,
+            topicsList: ['general-history'],
+        },
         topics: {
             'general-history': {
                 title: 'general history',
@@ -32,7 +37,6 @@ var app = new Vue({
                 cards: scienceCards
             }
         },
-        numberOfPlayers: 1,
         error: false,
         correctPlacementCards: [],
         endOfGame: false
@@ -61,10 +65,10 @@ var app = new Vue({
             this.playedCards = currentPlayedCards;
         },
         handOverPlayersCards() {
-            const initialNumberOfPlayersCards = this.numberOfPlayers * 4;
+            const initialNumberOfPlayersCards = this.settings.numberOfPlayers * 4;
             let playersCards = this.cards.slice(1, initialNumberOfPlayersCards + 1);
             var splittedPlayersCards = {};
-            for (var i = 0; i < this.numberOfPlayers; i++) {
+            for (var i = 0; i < this.settings.numberOfPlayers; i++) {
                 splittedPlayersCards[`player${i}`] = playersCards.slice(i * 4, i * 4 + 4);
             }
             this.playersCards = {...splittedPlayersCards};
@@ -111,7 +115,7 @@ var app = new Vue({
             this.shiftThePlayer();
         },
         shiftThePlayer: function() {
-            if (this.currentPlayerIndex === this.numberOfPlayers - 1) {
+            if (this.currentPlayerIndex === this.settings.numberOfPlayers - 1) {
                 this.currentPlayerIndex = 0
             } else {
                 this.currentPlayerIndex = this.currentPlayerIndex + 1;
@@ -122,12 +126,12 @@ var app = new Vue({
             this.cards = shuffle(this.cards);
             this.playedCards = this.cards.slice(0, 1);
             this.handOverPlayersCards();
-            this.packCards = this.cards.slice((this.numberOfPlayers * 4) + 1, n);
+            this.packCards = this.cards.slice((this.settings.numberOfPlayers * 4) + 1, n);
         },
 
         restart: function() {
             this.cards = []
-            this.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
+            this.settings.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
             this.handOverCards(this.cards.length);
             this.selectedCard = {};
             this.currentPlayerIndex = 0;
@@ -166,4 +170,4 @@ function copyArray(source, array) {
       array[index] = source[index]
     }
     return array
-  }
+}
