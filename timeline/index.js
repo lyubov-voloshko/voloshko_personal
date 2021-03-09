@@ -1,12 +1,12 @@
-import artHistory from "./cards/art.js"
-// import errorPopup from "./errorPopup"
+import artHistory from "./cards/art.js";
+import errorPopup from "./errorPopup.js";
 import generalHistoryCards from "./cards/general-history.js";
 import scienceCards from "./cards/science.js";
 
 var app = new Vue({
     el: '#app',
     components: {
-        // 'error-popup': errorPopup
+        'error-popup': errorPopup
     },
     data: {
         cards: shuffle(generalHistoryCards),
