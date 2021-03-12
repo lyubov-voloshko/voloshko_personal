@@ -23,7 +23,7 @@
                             <button v-if="index === 0 && playersCards.length !== 0"
                                 :disabled="!selectedCard.id"
                                 class="vacantLot"
-                                :class="{ vacantLot_active:selectedCard.id }"
+                                :class="{ vacantLot_active: selectedCard.id }"
                                 v-on:click="() => putCard(card, -1)"
                                 >
                             </button>

@@ -218,15 +218,30 @@ input[type=number] {
 .vacantLot {
     flex-shrink: 0;
     display: block;
-    background: silver;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23aaa9ad' stroke-width='3' stroke-dasharray='8%2c 12' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
     border: none;
-    height: 80%;
+    border-radius: 50%;
+    height: 32px;
     margin: 0 0.5em;
-    width: 12px;
+    width: 32px;
+    transition: width 300ms, height 300ms;
+}
+
+.vacantLot:hover {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23aaa9ad' stroke-width='3' stroke-dasharray='8%2c 12' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 0;
+    height: 200px;
+    width: 150px;
+}
+
+.vacantLot_active {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23333333' stroke-width='3' stroke-dasharray='8%2c 12' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
 }
 
 .vacantLot_active:hover {
-    background: gold;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23FFD700' stroke-width='3' stroke-dasharray='8%2c 12' stroke-dashoffset='3' stroke-linecap='square'/%3e%3c/svg%3e");
 }
 
 .playersCardsList {

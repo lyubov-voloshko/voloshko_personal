@@ -3,6 +3,7 @@ import errorPopup from "./errorPopup.js";
 import generalHistoryCards from "./cards/general-history.js";
 import scienceCards from "./cards/science.js";
 import settings from "./settings.js";
+import shuffle from "https://cdn.jsdelivr.net/npm/lodash-es@4.17.21/_shuffleSelf.js"
 
 var app = new Vue({
     el: '#app',
@@ -104,7 +105,6 @@ var app = new Vue({
                 } else {
                     this.correctPlacementCards = [this.playedCards[this.playedCards.length - 1], this.selectedCard];
                 }
-                // this.shiftThePlayer();
             }
             if (!this.error && this.playersCards[this.currentPlayer].length !== 0) this.shiftThePlayer();
         },
@@ -113,6 +113,7 @@ var app = new Vue({
             this.addCardToPlayersCards();
             this.error = false;
             this.shiftThePlayer();
+            this.selectedCard = {};
         },
         shiftThePlayer: function() {
             if (this.currentPlayerIndex === this.settings.numberOfPlayers - 1) {
@@ -144,30 +145,30 @@ var app = new Vue({
     }
 })
 
-function shuffle(array) {
-    const length = array == null ? 0 : array.length
-    if (!length) {
-      return []
-    }
-    let index = -1
-    const lastIndex = length - 1
-    const result = copyArray(array)
-    while (++index < length) {
-      const rand = index + Math.floor(Math.random() * (lastIndex - index + 1))
-      const value = result[rand]
-      result[rand] = result[index]
-      result[index] = value
-    }
-    return result
-}
+// function shuffle(array) {
+//     const length = array == null ? 0 : array.length
+//     if (!length) {
+//       return []
+//     }
+//     let index = -1
+//     const lastIndex = length - 1
+//     const result = copyArray(array)
+//     while (++index < length) {
+//       const rand = index + Math.floor(Math.random() * (lastIndex - index + 1))
+//       const value = result[rand]
+//       result[rand] = result[index]
+//       result[index] = value
+//     }
+//     return result
+// }
 
-function copyArray(source, array) {
-    let index = -1
-    const length = source.length
+// function copyArray(source, array) {
+//     let index = -1
+//     const length = source.length
 
-    array || (array = new Array(length))
-    while (++index < length) {
-      array[index] = source[index]
-    }
-    return array
-}
+//     array || (array = new Array(length))
+//     while (++index < length) {
+//       array[index] = source[index]
+//     }
+//     return array
+// }
