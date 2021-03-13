@@ -76,8 +76,10 @@
                 <div v-if="endOfGame" class="modal">
                     <div class="veil"></div>
                     <div class="popup">
-                        <p>The game is over.</p>
-                        <p>The winner is <strong>{{ settings.playersList[currentPlayer] }}</strong></p>
+                        <div class="final">
+                            <p class="final__title">The game is over</p>
+                            <p>The winner is <strong class="final__winner">{{ settings.playersList[currentPlayer] || currentPlayer }}</strong>.</p>
+                        </div>
                         <button class="button button_solid popup__button"
                             v-on:click="() => restart(settings, newPlayerIndex, numberOfPlayers, playersOrder)">
                             restart

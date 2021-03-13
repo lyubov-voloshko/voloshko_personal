@@ -387,3 +387,20 @@ input[type=number] {
 .iconButton:hover {
     color: #333;
 }
+
+.final {
+    width: 30vw;
+}
+
+.final p {
+    font-size: 1.25em;
+    text-align: center;
+}
+
+.final__title {
+    margin-bottom: 1em;
+}
+
+.final__winner {
+    text-shadow: 0 0 1px black;
+}
