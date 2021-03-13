@@ -8,12 +8,21 @@
         <div id="app" class="main">
             <header class="header">
                 <span>TimeLine</span>
+                <button type="button"
+                    class="fab header__fab"
+                    v-on:click="() => showSettings()">
+                    <span>⚙</span>
+                </button>
             </header>
             <main v-cloak>
-                <settings
+                <settings v-if="settingsShown"
                     :settings="settings"
                     :topics="topics"
-                    @restart="restart()"
+                    :newPlayerIndex="newPlayerIndex"
+                    :numberOfPlayers="numberOfPlayers"
+                    :playersOrder="playersOrder"
+                    @restart="restart"
+                    @close="hideSettings"
                 ></settings>
 
                 <div v-if="this.packCards.length === 0 && this.playersCards === 0">Game over</div>
@@ -44,7 +53,7 @@
                 <div class="players">
                     <div class="playersCards">
                         <div v-for="(cardsSet, player) in playersCards" class="playerCards" :class="{ playerCards_active: currentPlayer === player}">
-                            <p class="playerCards__name">{{ player }}</p>
+                            <p class="playerCards__name">{{ settings.playersList[player] || player }}</p>
                             <ul  class="playersCardsList">
                                 <li v-for="(card, index) in cardsSet"
                                     class="card card_players"
@@ -61,15 +70,18 @@
                 <error-popup v-if="error"
                     :selectedCard="selectedCard"
                     :correctPlacementCards="correctPlacementCards"
-                    @handleOk="giveNewCard()"
+                    @handleOk="giveNewCard"
                 ></error-popup>
 
                 <div v-if="endOfGame" class="modal">
                     <div class="veil"></div>
                     <div class="popup">
                         <p>The game is over.</p>
-                        <p>The winner is <strong>{{ currentPlayer }}</strong></p>
-                        <button class="button popup__button" v-on:click="() => restart()">restart</button>
+                        <p>The winner is <strong>{{ settings.playersList[currentPlayer] }}</strong></p>
+                        <button class="button button_solid popup__button"
+                            v-on:click="() => restart(settings, newPlayerIndex, numberOfPlayers, playersOrder)">
+                            restart
+                        </button>
                     </div>
                 </div>
             </main>

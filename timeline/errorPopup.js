@@ -1,6 +1,8 @@
+const html = String.raw;
+
 export default {
     template:
-    `<div class="modal">
+    html`<div class="modal">
         <div class="veil"></div>
         <div class="popup">
             <ul class="cardBox">
@@ -10,7 +12,7 @@ export default {
                 </li>
             </ul>
 
-            <button class="button popup__button" v-on:click="$emit('handleok')">ok</button>
+            <button class="button button_solid popup__button" v-on:click="$emit('handleok')">ok</button>
         </div>
     </div>`,
     props: {

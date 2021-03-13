@@ -26,6 +26,7 @@ body {
 }
 
 .header {
+    position: relative;
     font-family: 'Noto Serif', serif;
     background: #333;
     color: gold;
@@ -36,23 +37,27 @@ body {
 }
 
 .settings {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 2%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-gap: 16px 32px;
+    margin: 16px 0;
+    width: 45vw;
+
 }
 
 .topics {
-    display: flex;
-    align-items: center;
+    list-style-type: none;
 }
 
 .topic {
-    margin-right: 3em;
+    margin-bottom: 1em;
 }
 
 .playersCount {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
 .playersCount__label {
@@ -85,7 +90,6 @@ input[type=number] {
 
 .checkbox {
     display: flex;
-    justify-content: center;
 }
 
 .checkbox__input {
@@ -118,13 +122,42 @@ input[type=number] {
 }
 
 .button {
-    background: #333;
-    border: none;
+    border: 1px solid #333;
     border-radius: 4px;
-    color: whitesmoke;
     font-size: 1em;
     line-height: 2em;
     padding: 0 0.75em;
+}
+
+.button_outlined {
+    background: transparent;
+    color: #333;
+}
+
+.button_solid {
+    background: #333;
+    color: whitesmoke;
+}
+
+.fab {
+    position: absolute;
+    border: none;
+    border-radius: 16px;
+    background-color: gold;
+    font-size: 1em;
+    height: 32px;
+    width: 32px;
+}
+
+.fab span {
+    display: inline-block;
+    margin-top: -6px;
+}
+
+.header__fab {
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
 }
 
 .playfieldBox {
@@ -274,10 +307,83 @@ input[type=number] {
     align-items: flex-end;
     background: #fff;
     border-radius: 8px;
-    padding: 2em 1em 1em;
+    padding: 2em 2em 1.5em;
+}
+
+.popup__header {
+    display: flex;
+    flex-direction: column;
+    margin-top: -20px;
+    width: 100%;
+    z-index: 1;
+}
+
+.popup__closeButton {
+    align-self: flex-end;
+    font-size: 1.5em;
 }
 
 .popup__button {
     margin-top: 1.5em;
     width: 80px;
+}
+
+.popup__title {
+    font-size: 1.5em;
+}
+
+.popup__subtitle {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+}
+
+.playersCount__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playersList {
+    list-style-position: inside;
+}
+
+.playersList li {
+    margin-bottom: 1em;
+}
+
+.playerItem {
+    display: inline-grid;
+    grid-template-columns: auto 70% auto;
+    grid-gap: 3.5%;
+    align-items: center;
+
+}
+
+.textField {
+    border-radius: 8px;
+    border: 1px solid darkgray;
+    line-height: 26px;
+    padding: 0 10px;
+    font-size: 0.875em;
+}
+
+.textField:focus {
+    border: 1px solid #333;
+    outline: none;
+}
+
+.playerItem__deleteButton {
+    font-size: 1.15em;
+    margin-top: -4px;
+}
+
+.iconButton {
+    background: transparent;
+    border: none;
+    color: darkgray;
+}
+
+
+.iconButton:hover {
+    color: #333;
 }

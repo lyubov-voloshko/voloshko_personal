@@ -18,10 +18,13 @@ var app = new Vue({
         playedCards: [],
         playersCards: Object,
         currentPlayerIndex: 0,
+        newPlayerIndex: 1,
         currentPlayer: 'player0',
         packCards: [],
+        playersOrder: ['player0'],
+        numberOfPlayers: 1,
         settings: {
-            numberOfPlayers: 1,
+            playersList: { player0: '' },
             topicsList: ['general-history'],
         },
         topics: {
@@ -40,6 +43,7 @@ var app = new Vue({
         },
         error: false,
         correctPlacementCards: [],
+        settingsShown: false,
         endOfGame: false
     },
     methods: {
@@ -66,11 +70,11 @@ var app = new Vue({
             this.playedCards = currentPlayedCards;
         },
         handOverPlayersCards() {
-            const initialNumberOfPlayersCards = this.settings.numberOfPlayers * 4;
+            const initialNumberOfPlayersCards = this.numberOfPlayers * 4;
             let playersCards = this.cards.slice(1, initialNumberOfPlayersCards + 1);
             var splittedPlayersCards = {};
-            for (var i = 0; i < this.settings.numberOfPlayers; i++) {
-                splittedPlayersCards[`player${i}`] = playersCards.slice(i * 4, i * 4 + 4);
+            for (var i = 0; i < this.numberOfPlayers; i++) {
+                splittedPlayersCards[this.playersOrder[i]] = playersCards.slice(i * 4, i * 4 + 4);
             }
             this.playersCards = {...splittedPlayersCards};
         },
@@ -116,29 +120,43 @@ var app = new Vue({
             this.selectedCard = {};
         },
         shiftThePlayer: function() {
-            if (this.currentPlayerIndex === this.settings.numberOfPlayers - 1) {
+            if (this.currentPlayerIndex === this.numberOfPlayers - 1) {
                 this.currentPlayerIndex = 0
             } else {
-                this.currentPlayerIndex = this.currentPlayerIndex + 1;
+                ++this.currentPlayerIndex;
             }
-            this.currentPlayer = `player${this.currentPlayerIndex}`
+            this.currentPlayer = this.playersOrder[this.currentPlayerIndex];
+            console.log(this.currentPlayer);
         },
         handOverCards: function(n) {
             this.cards = shuffle(this.cards);
             this.playedCards = this.cards.slice(0, 1);
             this.handOverPlayersCards();
-            this.packCards = this.cards.slice((this.settings.numberOfPlayers * 4) + 1, n);
+            this.packCards = this.cards.slice((this.numberOfPlayers * 4) + 1, n);
         },
 
-        restart: function() {
-            this.cards = []
+        showSettings: function() {
+            this.settingsShown = true;
+        },
+        hideSettings: function() {
+            this.settingsShown = false;
+        },
+        restart: function(updatedSettings, updatedNewPlayerIndex, updatedNumberOfPlayers,updatedPlayersOrder) {
+            this.cards = [];
+
+            this.settings = {...updatedSettings};
+            this.newPlayerIndex = updatedNewPlayerIndex;
+            this.numberOfPlayers = updatedNumberOfPlayers;
+            this.playersOrder = [...updatedPlayersOrder];
+
             this.settings.topicsList.forEach(topicName => this.cards = [...this.cards, ...this.topics[topicName].cards]);
             this.handOverCards(this.cards.length);
             this.selectedCard = {};
             this.currentPlayerIndex = 0;
-            this.currentPlayer = 'player0';
+            this.currentPlayer = this.playersOrder[0];
+            this.settingsShown = false;
             this.endOfGame = false;
-        }
+        },
     },
     beforeMount() {
         this.handOverCards(20);
