@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/*** images
+
+brain: https://images.theconversation.com/files/293136/original/file-20190919-53524-faquip.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop
+https://img.17qq.com/images/qqfhgpnky.jpeg
+https://miro.medium.com/max/12000/1*1txf77HkRU0bvs2ONAIzzQ.jpeg
+***/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --accented-color: #FFCC66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins;
+  height: 100vh;
+  width: 100vw;
+}
+
+body,
+.glass::before {
+  /* background-image: url(https://news.harvard.edu/wp-content/uploads/2020/12/iStock-neurons_2500-945x630.jpg); */
+  /* background-image: url(https://news-media.stanford.edu/wp-content/uploads/2020/04/07113135/GettyImages-1091303694-copy.jpg); */
+  background-image: url(https://static.timesofisrael.com/www/uploads/2019/06/iStock-1053434168-e1559826012470.jpg);
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  color: black;
+  height: 86vh;
+  width: 90vw;
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  mask: url('./mask.svg');
+  -webkit-mask-image: url('mask.svg');
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('./bg.svg');
+  z-index: -1;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  justify-items: center;
+  background: rgba(255,255,255,0.15);
+  height: clamp(50px, 20%, 70px);
+  padding: 0 2%;
+  width: 100%;
+}
+
+.nav__item {
+  display: flex;
+}
+
+.nav__buttom {
+  border: none;
+  background: transparent;
+  color: var(--accented-color);
+  font-size: 0.875em;
+  font-weight: 300;
+  padding: 0 1.75em;
+  text-transform: uppercase;
+  transition: color 300ms;
+}
+
+.nav__buttom:hover {
+  color: #fff;
+}
+
+.nav__buttom_active {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2))
+    ,
+    radial-gradient(transparent 85%, rgba(255,255,255,0.1))
+    ;
+  color: #fff;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  padding: 2%;
+}
+
+.info {
+  padding: 5% 3% 3%;
+  width: 40%;
+}
+
+.info__title {
+  color: #FFCC66;
+  font-size: 3em;
+  font-weight: 300;
+  margin-bottom: 2%;
+}
+
+.info__text {
+  color: rgba(255, 204, 102, 0.65);
+  font-weight: 400;
+}
+
+.actions {
+  margin: 6% 0;
+}
+
+.actions__button {
+  margin-right: 3%;
+}
+
+.button {
+  background: linear-gradient(45deg, #A49F88, #FFCC66);
+  border-radius: 0 15px / 0 15px;
+  box-sizing: border-box;
+  color: #5C5F69;
+  font-size: 0.875em;
+  font-weight: 400;
+  padding: 8px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.copywriting {
+  position: absolute;
+  bottom: 0;
+  right: -6%;
+  color: #2BB6CB;
+  font-size: 0.875em;
+  font-weight: 400;
+  transform: rotate(-90deg);
+  z-index: 1;
+}
+
+.copywriting a {
+  color: inherit;
+}
