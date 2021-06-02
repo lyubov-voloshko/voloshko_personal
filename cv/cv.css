@@ -3,21 +3,25 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-text: #333;
-    --color-main-bg-surface: darkgray;
-    --color-main-bg: whitesmoke;
-    --color-sideBar-bg-surface: #666;
-    --color-sideBar-bg: #dedede;
+    --color-main-text: #333;
+    --color-main-bg-surface: #2A3653;
+    --color-main-bg: #fff;
+    --color-sideBar-text: #F0F0F0;
+    --color-sideBar-bg-surface: #D3E1F7;
+    --color-sideBar-bg: #2A3653;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: whitesmoke;
+    --color-main-text: whitesmoke;
     --color-main-bg-surface: darkgray;
     --color-main-bg: #333;
+    --color-sideBar-text: whitesmoke;
     --color-sideBar-bg-surface: #666;
     --color-sideBar-bg: black;
+
+    --filter-pet-project-list: brightness(0) invert(1);
   }
 }
 
@@ -60,9 +64,13 @@ body {
 }
 
 main {
-  display: flex;
-  align-items: stretch;
-  color: var(--color-text);
+  /* display: flex;
+  align-items: stretch; */
+  display: grid;
+  grid-template-columns: minmax(280px, min(20%, 380px)) 1fr;
+  grid-template-rows: fit-content(100vh);
+  max-height: 100vh;
+  color: var(--color-main-text);
   font-weight: 300;
   min-height: 100%;
   max-height: 100vh;
@@ -84,10 +92,11 @@ ul {
   flex-direction: column;
   background: var(--color-sideBar-bg);
   box-sizing: border-box;
+  color: var(--color-sideBar-text);
   font-size: 0.875em;
-  padding: 3.5% 2%;
-  height: 100%;
-  width: 30%;
+  padding: 12% 6%;
+  height: 100vh;
+  max-width: 380px;
   z-index: 1;
 }
 
@@ -134,7 +143,7 @@ ul {
   display: inline-block;
   background-image: linear-gradient(var(--color-sideBar-bg-surface), var(--color-sideBar-bg-surface));
   background-repeat: no-repeat;
-  border: 1px solid var(--color-text);
+  border: 1px solid var(--color-sideBar-bg-surface);
   height: 0.75em;
 }
 
@@ -149,16 +158,18 @@ ul {
 }
 
 .page {
-  flex: 1 0 80%;
   display: flex;
   flex-direction: column;
   background: var(--color-main-bg);
   box-sizing: border-box;
-  padding: 3.5% 2%;
+  margin: 3% 0;
+  padding: 0 2em;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .page__heading1 {
-  margin-bottom: 32px;
+  margin-bottom: 8px;
 }
 
 .jobs {
@@ -169,7 +180,7 @@ ul {
 }
 
 .job {
-  
+  margin-top: 3%;
 }
 
 .job__header {
@@ -189,7 +200,7 @@ ul {
 .job__company {
   display: inline-block;
   line-height: 1.25em;
-  margin-bottom: 8px; 
+  margin-bottom: 8px;
   text-transform: uppercase;
 }
 
@@ -197,20 +208,28 @@ ul {
   display: grid;
   grid-template-columns: 2fr 2fr 3fr;
   grid-gap: 0.5vw 20px;
-  align-items: center;
 }
 
 @media screen and (max-width: 720px) {
   .experience {
-    grid-template-columns: 1fr;    
+    grid-template-columns: 1fr;
   }
 }
 
 .experience__level {
   background-image: linear-gradient(var(--color-main-bg-surface), var(--color-main-bg-surface));
   background-repeat: no-repeat;
-  border: 1px solid var(--color-text);
+  border: 1px solid var(--color-main-text);
   height: 1em;
+}
+
+.experience__technology_top,
+.experience__level_top {
+  align-self: flex-start;
+}
+
+.experience__job {
+  padding-right: 32px;
 }
 
 @media screen and (max-width: 720px) {
@@ -223,19 +242,16 @@ ul {
 
 .sidebar__logo {
   display: block;
-  background: var(--color-text);
+  background: whitesmoke;
   border-radius: 4px;
   font-size: 2.5em;
-  color: var(--color-main-bg);
+  color: #333;
   margin: 0 auto 30px;
   text-decoration: none;
 }
 
 .petProjects {
-  position: absolute;
-  right: 30px;
-  bottom: 30px;
-  width: 35%;
+
 }
 
 .petProject {
@@ -249,13 +265,13 @@ ul {
   display: inline-block;
   background-image: url(../assets/images/paw.png);
   background-size: cover;
-  filter: brightness(0) invert(1);
+  filter: var(--filter-pet-project-list);
   margin-right: 8px;
   height: 16px;
   width: 16px;
 }
 
 .petProject__link {
-  color: var(--color-text);
+  color: var(--color-main-text);
   font-size: 0.75em;
 }
