@@ -16,7 +16,8 @@
 }
 
 .logo {
-  background: whitesmoke;
+  background: #1A1A1A;
+  border-radius: 0.15em;
   font-family: Parisian, sans-serif;
   font-size: 2em;
   z-index: 1;

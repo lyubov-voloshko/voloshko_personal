@@ -11,6 +11,7 @@ body {
   background: #000;
   height: 100vh;
   width: 100vw;
+  font-size: calc(14px + 6 * ((100vw - 720px) / 1024));
 }
 
 main {
@@ -53,13 +54,12 @@ main {
 }
 
 .socAccount {
-  transform: translate(0,0);
-  transform-origin: left center;
+  font-size: 1.25em;
   transition: color 0.3s, transform 300ms;
   transition-timing-function: linear;
   cursor: pointer;
   padding: 15px;
-  margin: 10px;
+  margin: 10%;
 }
 
 @media screen and (max-width: 720px) {
@@ -89,16 +89,22 @@ main {
     }
 
   .socAccount:hover {
-    transform: scale(1.1);
+    text-shadow:
+    0 0 1px #fff,
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #464646,
+    0 0 25px #464646,
+    0 0 38px #464646;
+    /* 0 0 100px #464646,
+    0 0 150px #464646; */
     transform-origin: left center;
   }
 
 .portrait {
   position: relative;
-  background: #AEAEAF;
-  height: 50vmin;
+  margin-left: -10%;
   overflow: hidden;
-  width: 50vmin;
 }
 
 @media screen and (max-width: 720px) {
@@ -110,8 +116,8 @@ main {
 }
 
 .portrait img {
-
-  width: 110%;
+  height: 100vh;
+  max-height: 100vh;
   animation: show-portrait 3s;
 }
 
@@ -148,9 +154,11 @@ main {
 .portrait__logo {
   position: absolute;
   bottom: 20px;
-  left: 20px;
-  font-size: 2em;
-  mix-blend-mode: screen;
+  right: 20px;
+  color: whitesmoke;
+  font-size: 2.5vw;
+  height: 9vw;
+  width: 9vw;
   z-index: 1;
 }
 
